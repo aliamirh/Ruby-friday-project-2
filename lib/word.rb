@@ -13,4 +13,18 @@ class Word
     @@words.values().sort {|a, b| a.words.downcase <=> b.words.downcase}
   end
 
+  def save
+    @@words[self.id] = Word.new(self.words, self.id)
+  end
+
+  def == (word_to_compare)
+    self.words() == word_to_compare.words()
+  end
+
+  def self.clear
+    @@words = {}
+    @@total_rows = 0
+  end
+
+
 end
