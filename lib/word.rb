@@ -13,5 +13,4 @@ class Word
     @@words.values().sort {|a, b| a.words.downcase <=> b.words.downcase}
   end
 
-
 end
