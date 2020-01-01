@@ -60,12 +60,42 @@ describe '#Definition' do
   end
 
   describe('#update') do
-  it("updates an definition by id") do
-    definition = Definition.new("fruit", @word.id, nil)
-    definition.save()
-    definition.update("a delicious fruit", @word.id)
-    expect(definition.input).to(eq("a delicious fruit"))
+    it("updates an definition by id") do
+      definition = Definition.new("fruit", @word.id, nil)
+      definition.save()
+      definition.update("a delicious fruit", @word.id)
+      expect(definition.input).to(eq("a delicious fruit"))
+    end
   end
-end
 
+  describe('#delete') do
+    it("deletes an definition by id") do
+      definition = Definition.new("fruit", @word.id, nil)
+      definition.save()
+      definition2 = Definition.new("crunchy fruit", @word.id, nil)
+      definition2.save()
+      definition.delete()
+      expect(Definition.all).to(eq([definition2]))
+    end
+  end
+
+  describe('.find_by_word') do
+    it("finds definition for an word") do
+      word2 = Word.new("Grape", nil)
+      word2.save
+      definition = Definition.new("sweet", @word.id, nil)
+      definition.save()
+      definition2 = Definition.new("Sweet fruit", word2.id , nil)
+      definition2.save()
+      expect(Definition.find_by_word(word2.id)).to(eq([definition2]))
+    end
+  end
+
+  describe('#word') do
+    it("finds the word a definition belongs to") do
+      definition = Definition.new("fruit", @word.id, nil)
+      definition.save()
+      expect(definition.word()).to(eq(@word))
+    end
+  end
 end

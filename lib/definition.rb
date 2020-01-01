@@ -24,16 +24,38 @@ class Definition
   end
 
   def self.find(id)
-  @@definitions[id]
-end
+    @@definitions[id]
+  end
 
   def self.clear
     @@definitions = {}
   end
 
   def update(input, word_id)
-  self.input = input
-  self.word_id = word_id
-  @@definitions[self.id] = Definition.new(self.input, self.word_id, self.id)
-end
+    self.input = input
+    self.word_id = word_id
+    @@definitions[self.id] = Definition.new(self.input, self.word_id, self.id)
+  end
+
+  def delete
+    @@definitions.delete(self.id)
+  end
+
+  def self.clear
+    @@definitions = {}
+  end
+
+  def self.find_by_word(wrd_id)
+    definitions = []
+    @@definitions.values.each do |definition|
+      if definition.word_id == wrd_id
+        definitions.push(definition)
+      end
+    end
+    definitions
+  end
+
+  def word
+    Word.find(self.word_id)
+  end
 end
