@@ -30,6 +30,23 @@ describe '#Definition' do
     end
   end
 
+  describe('.clear') do
+  it("clears all defs") do
+    definition = Definition.new("Giant Steps", @word.id, nil)
+    definition.save()
+    definition2 = Definition.new("Naima", @word.id, nil)
+    definition2.save()
+    Definition.clear()
+    expect(Definition.all).to(eq([]))
+  end
+end
 
+describe('#save') do
+  it("saves a def") do
+    definition = Definition.new("Naima", @word.id, nil)
+    definition.save()
+    expect(Definition.all).to(eq([definition]))
+  end
+end
 
 end
