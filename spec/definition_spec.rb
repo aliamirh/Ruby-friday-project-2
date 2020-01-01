@@ -64,7 +64,7 @@ describe '#Definition' do
     definition = Definition.new("fruit", @word.id, nil)
     definition.save()
     definition.update("a delicious fruit", @word.id)
-    expect(definition.name).to(eq("a delicious fruit"))
+    expect(definition.input).to(eq("a delicious fruit"))
   end
 end
 

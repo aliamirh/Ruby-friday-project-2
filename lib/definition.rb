@@ -30,4 +30,10 @@ end
   def self.clear
     @@definitions = {}
   end
+
+  def update(input, word_id)
+  self.input = input
+  self.word_id = word_id
+  @@definitions[self.id] = Definition.new(self.input, self.word_id, self.id)
+end
 end
