@@ -22,31 +22,41 @@ describe '#Definition' do
 
   describe('.all') do
     it("returns a list of all defs") do
-      definition = Definition.new("Giant Steps", @word.id, nil)
+      definition = Definition.new("fruit", @word.id, nil)
       definition.save()
-      definition2 = Definition.new("Naima", @word.id, nil)
+      definition2 = Definition.new("crunchy fruit", @word.id, nil)
       definition2.save()
       expect(Definition.all).to(eq([definition, definition2]))
     end
   end
 
   describe('.clear') do
-  it("clears all defs") do
-    definition = Definition.new("Giant Steps", @word.id, nil)
-    definition.save()
-    definition2 = Definition.new("Naima", @word.id, nil)
-    definition2.save()
-    Definition.clear()
-    expect(Definition.all).to(eq([]))
+    it("clears all defs") do
+      definition = Definition.new("fruit", @word.id, nil)
+      definition.save()
+      definition2 = Definition.new("crunchy fruit", @word.id, nil)
+      definition2.save()
+      Definition.clear()
+      expect(Definition.all).to(eq([]))
+    end
   end
-end
 
-describe('#save') do
-  it("saves a def") do
-    definition = Definition.new("Naima", @word.id, nil)
-    definition.save()
-    expect(Definition.all).to(eq([definition]))
+  describe('#save') do
+    it("saves a def") do
+      definition = Definition.new("fruit", @word.id, nil)
+      definition.save()
+      expect(Definition.all).to(eq([definition]))
+    end
   end
-end
+
+  describe('.find') do
+    it("finds a def by id") do
+      definition = Definition.new("fruit", @word.id, nil)
+      definition.save()
+      definition2 = Definition.new("crunchy fruit", @word.id, nil)
+      definition2.save()
+      expect(Definition.find(definition.id)).to(eq(definition))
+    end
+  end
 
 end
