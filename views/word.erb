@@ -1,18 +1,14 @@
 <h2>Word Being defined: <%= @word.input %></h2>
 
-<h3>Definitions for <%= @word.input %></h3>
+<h3>Definitions for <%= @word.input %>:</h3>
 
-<% if @word.definitions %>
 <ul>
   <% @word.definitions.each do |definition| %>
   <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>"><%= definition.input %></a></li>
   <% end %>
 </ul>
-<% else %>
-<p>There are no definitions listed for this word yet.</p>
-<% end %>
 
-<h4>Add a definition for <%= @word.input %></h4>
+<h4>Lets add a definition for <%= @word.input %>!</h4>
 
 <form action="/words/<%= @word.id %>/definitions" method="post">
   <div class="form-group">
@@ -21,8 +17,6 @@
   </div>
   <button type="submit" class="btn btn-info">Add definition</button>
 </form>
-
-
 
 <p><a href="/words/<%= @word.id %>/edit">Edit word</a></p>
 <p><a href="/">Return to word list</a></p>
