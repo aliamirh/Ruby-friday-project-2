@@ -13,7 +13,7 @@ _This website allows you to create "flash cards". You can add any amount of word
 * _Download/Clone repository_
 * _Run Bundle install to get Gemlock files_
 * _Run ruby app.rb to be able to run local host_
-* _In your Chrome browser enter localhost:4567_
+* _In your Chrome browser enter localhost:4567 OR https://sleepy-beyond-32081.herokuapp.com/ _
 * _Follow instructions to add words and definitions_
 
 
